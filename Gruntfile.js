@@ -308,22 +308,22 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean:dist',
-    'sass',
+    'clean:dist',     // Clears out your .tmp/ and dist/ folders
+    'sass',           // Compiles your Sassiness
     'copy',
-    'useminPrepare',
-    'imagemin',
-    'concat',
+    'useminPrepare',  // Looks for <!-- special blocks --> in your HTML
+    'imagemin',       // Optimizes your images!
+    'concat',         // Task used to concatenate your JS and CSS
     'autoprefixer',
-    'uglify',
-    'vulcanize',
-    'usemin',
-    'minifyHtml'
+    'uglify',         // Task used to minify your JS
+    'vulcanize',      // Concatenate HTML imports for improved loading performance
+    'usemin',         // Updates the references in your HTML with the new files
+    'minifyHtml'      // Minifies your HTML files
   ]);
 
   grunt.registerTask('default', [
     'jshint',
-    // 'test'
+    'test',
     'build'
   ]);
 };
