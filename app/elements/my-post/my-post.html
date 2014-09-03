@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="my-post" attributes="">
+<polymer-element name="my-post" attributes="post selected">
   <template>
     <link rel="stylesheet" href="my-post.css">
 
@@ -10,18 +10,14 @@
 
         <h2>
           <a href="#{{post.gsx$slug.$t}}">
-            {{post.gsx$title.$t  }}
+            {{post.gsx$title.$t}}
           </a>
         </h2>
 
         <p>By {{post.gsx$author.$t}}</p>
-
         <p>{{post.gsx$content.$t}}</p>
-
         <p>Published on: {{post.gsx$date.$t}}</p>
-
         <small>Keywords: {{post.gsx$keywords.$t}}</small>
-
       </template>
 
     </div>
@@ -31,11 +27,11 @@
     (function () {
       'use strict';
 
-    Polymer('my-post', {
-      created: function() {},
-      enteredView: function() {},
-      leftView: function() {},
-      attributeChanged: function(attrName, oldVal, newVal) {}
+      Polymer('my-post', {
+        created: function() {},
+        enteredView: function() {},
+        leftView: function() {},
+        attributeChanged: function(attrName, oldVal, newVal) {}
       });
 
     })();
