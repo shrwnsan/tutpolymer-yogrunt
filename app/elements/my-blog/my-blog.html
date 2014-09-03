@@ -1,13 +1,34 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="my-post/my-post.html">
-<link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="../../bower_components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="../../bower_components/flatiron-director/flatiron-director.html">
+<link rel="import" href="../my-post/my-post.html">
 
 <polymer-element name="my-blog" attributes="">
   <template>
-    <link rel="stylesheet" href="my-blog.css">
+    <link rel="stylesheet" href="my-blog.scss">
 
-    <span>I'm <b>blog-element</b>. This is my Shadow DOM.</span>
-    <my-post></my-post>
+    <div class="row">
+      <h1><a href="/#">My Polymer Blog</a></h1>
+
+      <flatiron-director route="{{route}}" autoHash></flatiron-director>
+
+      <h2>Posts</h2>
+
+      <!-- Table of contents -->
+      <ul>
+        <template repeat="{{post in posts.feed.entry}}">
+        <li><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></li>
+        </template>
+      </ul>
+
+      <!-- Post content -->
+      <template repeat="{{post in posts.feed.entry}}">
+        <my-post post="{{post}}" selected="{{route}}"></my-post>
+      </template>
+    </div>
+
+    <polymer-jsonp auto url="https://spreadsheets.google.com/feeds/list/0AuUp8NDsrQVjdEM5WWVkMlhSN3d4N2VmaTdqZVFld2c/od6/public/values?alt=json-in-script&callback=" response="{{posts}}"></polymer-jsonp>
+
   </template>
   <script>
     (function () {
